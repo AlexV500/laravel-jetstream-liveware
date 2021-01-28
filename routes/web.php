@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Plan\{PlanList, PlanCreate, PlanEdit};
 use App\Models\Expense;
 use App\Http\Livewire\Expense\{ExpenseCreate, ExpenseEdit, ExpenseList};
 use Illuminate\Support\Facades\Route;
@@ -40,5 +41,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             $mimeType = File::mimeType(storage_path('app/public/' . $expense->photo));
             return response($image)->header('Content-Type', $mimeType);
         })->name('photo');
+    });
+    Route::prefix('plans')->name('plans.')->group(function () {
+        Route::get('/', PlanList::class)->name('index');
+        Route::get('/create', PlanCreate::class)->name('create');
+        Route::get('/edit/{plan}', PlanEdit::class)->name('edit');
     });
 });

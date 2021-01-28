@@ -30,4 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'pagseguro' => [
+        'email' => env('PAGSEGURO_EMAIL', 'email'),
+        'token' => env('PAGSEGURO_TOKEN', 'token'),
+    ]
+
 ];
